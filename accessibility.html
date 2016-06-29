@@ -1,0 +1,118 @@
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' type='text/javascript'/>
+
+<script style='text/javascript'>
+	//<![CDATA[
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length,c.length);
+                }
+            }
+            return "normal";
+        }
+
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+            var expires = "expires="+ d.toUTCString();
+            document.cookie = cname + "=" + cvalue + "; " + expires + "; path=/";
+        }
+
+        function changeColor(){
+                    
+            if(getCookie('color') === 'normal'){
+                            setDark();
+            } else {
+                            setNormal();
+            }
+        }
+
+        function setNormal(){
+
+            setCookie('color', 'normal', 365);
+            $('body').css("background-color", "#fff");
+            $('body').css("font-size", "100%");
+            $('footer').css("background-color", "#fff");
+            $('.content-inner').css("background-color", "#fff");
+            $('#footer-social').css("background-color", "#fff");
+            $('.bx-wrapper .bx-viewport').css("background-color", "#fff");
+            $('.share-box').css("background-color", "#fff");
+            $('div#sidebar h2 span').css("background-color", "#fff");
+            $('.blog-post-alt-main').css("background-color", "#fff");
+
+
+            $('body').css("color", "#000");
+            $('h1').css("color", "#000");
+            $('h2').css("color", "#000");
+            $('a').css("color", "#f16549");
+            $('a').css("text-decoration", "none");
+            
+            $('.blog-post-alt-title h2 a').css('color', 'rgb(89, 89, 89)');
+            $('.blog-post-alt-read-more a').css('color', "#fff");
+
+
+            $('span').filter(function() {
+            var match = 'rgb(255, 255, 0)';
+            return ( $(this).css('color') == match );
+
+            }).css('color', '#000');
+        }
+
+        function setDark(){
+            setCookie('color', 'dark', 365);
+            $('body').css("background-color", "#000");
+            $('body').css("font-size", "120%");
+            $('.content-inner').css("background-color", "#000");
+            $('footer').css("background-color", "#000");
+            $('#footer-social').css("background-color", "#000");
+            $('.bx-wrapper .bx-viewport').css("background-color", "#000");
+            $('.share-box').css("background-color", "#000");
+            $('div#sidebar h2 span').css("background-color", "#000");
+            $('.blog-post-alt-main').css("background-color", "#000");
+
+            $('body').css("color", "#ffff00");
+            $('h1').css("color", "#ffff00");
+            $('h2').css("color", "#ffff00");
+            $('a').css("color", "#ffff00");
+            $('a').css("text-decoration", "underline");
+
+
+
+            $('span').filter(function() {
+            var match = 'rgb(0, 0, 0)';
+            return ( $(this).css('color') == match );
+
+            }).css('color', '#ffff00');
+
+        }
+
+        //]]>
+</script>
+
+
+<!-- after body start tag -->
+<div style='width: 100%; text-align: center;'>
+    <a href='#' onclick='changeColor()'>Web Accessibility</a>
+</div>
+
+
+
+
+
+
+<!-- before body close tag --> 
+<script style='text/javascript'>
+
+    $(document).ready(function(){
+    if(getCookie('color') === 'dark'){
+            setDark();
+    }
+    })
+
+</script>
